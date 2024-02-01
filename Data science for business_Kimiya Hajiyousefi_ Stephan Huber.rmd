@@ -1,0 +1,487 @@
+---
+title: "Maximizing Car Consumer Satisfaction Through Data-Driven Quality and Performance"
+author: "hajiyousefi.kimiya@stud.hs-fresenius.de"
+date: "HS-Fresenius: Data Science for Business"
+output:
+  html_document:
+    toc: yes
+    toc_depth: '3'
+    number_sections: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+    number_sections: yes
+    latex_engine: xelatex
+  word_document:
+    toc: yes
+    toc_depth: '3'
+citation_package: natbib
+biblio-style: apalike
+fontsize: 12pt
+urlcolor: blue
+linkcolor: red
+bibliography: C:/Users/A S U S/Desktop/FinalRProject/lit/reference.bib
+---
+
+```{r setup, include=FALSE}
+library("knitr")
+knit_hooks$set(purl = hook_purl)
+```
+Rendered at `r format(Sys.time(), '%d %B, %Y')`
+
+```{r 1, include=FALSE}
+setwd("C:/Users/A S U S/Desktop/FinalRProject")
+```
+
+Word count: `r as.integer(sub("(\\d+).+$", "\\1", system(sprintf("wc -w %s", knitr::current_input()), intern = TRUE))) - 20`
+
+## Abstract {.unlisted .unnumbered}
+Customer satisfaction is among the most crucial concerns in today's business world. Related terms such as customer loyalty, customer experience management, and customer success have also become integral aspects of modern organizations. It does not matter where you stand in the production and economic cycles; everything you do is always in line to increase customer satisfaction. In the meantime, car manufacturers in Iran are not exempted. Due to the monopoly of this industry in Iran, they are always trying to increase customer satisfaction or keep it at an acceptable level. This matter cannot be implemented in any way except with customer research and satisfaction research through an engineered vision that can reveal the unsaid for managers and make decision-making more reliable for them. This report aims to identify the most important and influential factors influencing consumer satisfaction. Hopefully, the examination and monitoring of customer satisfaction, which serves as an ostensible marker, is not just a marketing tool but a legitimate avenue to improve the quality of the automotive industry.
+
+# Introduction
+In this study, I want to increase the customer satisfaction rate and solve a business issue in the car manufacturing industry in Iran. Iran's automotive industry is the second largest after the oil industry in Iran. Currently, there are two manufacturers, IKCO and Saipa, and they are the only car manufacturers controlling the market. This monopoly in Iran's automobile industry has created a unipolar market, resulting in a decrease in quality and an excessive increase in product prices. Due to needing the desired quality, the companies suffered a drop in sales. Naturally, one of the solutions they considered was to check customer satisfaction, find the points that lowered the quality and fix these defects. Since then, these businesses have been working to improve the quality of their products.
+Therefore, in this respect, I found some good literature that can help me understand the different aspects of the subject as much as possible.
+Gathering customer feedback on existing products and services will give businesses the insight to drive future decisions, resulting in a genuinely customer-oriented business. The customer satisfaction goals should be aimed at: improving customer loyalty, increasing customer satisfaction rates, increasing product advocacy, improving product usability, and driving successful cross-team collaboration [@Bloemer1992].
+The ultimate concern of most businesses in any industry in today's market-oriented business climate is how to satisfy customers. As a result, the mainstream academic literature about CS has been formed in recent years. Managers need to understand customer satisfaction (CS) dimensions, quantify them, and use these measurements. Due to its enormous effects on both the long-term performance of businesses and consumer purchasing habits, CS is crucial to measure. In the academic community, it is well known that regularly delivering high customer satisfaction (CS) is linked to greater customer loyalty and an improved reputation [@Wangenheim2004], [@Fornell1992], [@Anderson1993].
+The following is a commonly accepted definition of satisfaction: "Satisfaction is the consumer's fulfilling response." A product or service feature, or the product or service itself, "gave (or continues to give) a pleasurable level of consumption-related fulfilment, including levels of under- or over-fulfilment"[@Oliver1997]
+A product's or service's satisfaction is a construct that is dependent on use and experience [@Oliver1997]. This definition is astounding. First, the "consumer" is the main subject rather than the "customer." Traditionally, a customer pays for a product or service but may not be the consumer. The consumer (direct user) consumes the product or service.
+The level of (dis)satisfaction that a product or service user (the customer) would experience should not be expected of people who pay for a product or service but do not utilize it. In order to understand the concept of customer satisfaction, we must understand that it refers to user satisfaction rather than buyer happiness (which may include non-users) [@Hom2000]. From now on, I will use "consumer satisfaction" instead of "customer satisfaction."
+Feeling satisfied is something that, given a set of conditions, is a transient attitude that is easily changed [@Hom2000].
+
+80 per cent of business problems can be solved through simple analysis methods such as:
+1) Cumulative analysis
+2) Correlation analysis
+3) Trend analysis
+4) estimation and generalization.
+In this study, we will help these organizations through customer satisfaction data, correlation analysis, and regression to discover precisely which areas they should take corrective measures in.
+
+__Regression__
+Using data to discover the relationship between them is broadly called "data mining." One of the tools for relationship measurement and modelling is the use of statistical regression tools. In order to analyze and discover the model of "data fog" (Big Data), different regression methods have been developed. The use of simple linear regression analysis is widely used in various data mining sciences, especially in the subject of "machine learning." Linear regression is the first algorithm one would learn when beginning a career in machine learning or deep learning because it is simple to implement and apply in real-time. This algorithm is widely used in data science and statistical fields to model the relationship between a scalar response (or dependent variable) and one or more explanatory variables (or independent variables). Several types of regression techniques are available based on the data being used. Although linear regression involves simple mathematical logic, its applications are used across different fields in real-time [@Kurama2020].
+
+__Simple Linear Regression__
+Simple linear regression is a statistical method that models the relationship between two variables, one independent (predictor) and one dependent (response). The goal is to fit a straight line to the data that best captures the relationship between the variables and predicts the response based on the predictor.
+
+__Multiple Linear Regression__
+One of the conventional methods in multivariate analysis is the "multiple linear regression" technique. Regression analysis establishes a linear relationship between the "response variable" and one or more "explanatory variables." Of course, sometimes, the response variable is called a "dependent variable," and descriptive variables are also called "independent variables."
+If the relationship between a response change and a change line is unchangeable, the regression technique is called simple linear regression. However, if several descriptive or independent variables are used in the regression model, the regression method is called "Multiple Linear Regression." Of course, the non-differentiated regression method of multiple and independent response variables is also used, which is called "multivariate regression," and more than one response variable is analyzed and modelled.
+
+__Regression Analysis__
+Regression analysis estimates the relationship between a dependent variable and one or more independent variables. This technique is widely applied to predict the outputs by forecasting the data, analyzing the time series, and finding the causal effect dependencies between the variables. There are several regression techniques based on the number of independent variables, the dimensionality of the regression line, and the type of dependent variable. Out of these, the two most popular regression techniques are linear regression and logistic regression.
+Regression has numerous applications. Researchers use regression to indicate the strength of the impact of multiple independent variables on a dependent variable on different scales. For example, consider a data set of weather information recorded over the past few decades. We could use that data to forecast the weather for the next couple of years. Regression is also widely used in organizations and businesses to assess risk and growth based on previously recorded data [@Kurama2020].
+
+__The Math and Logic Behind Linear Regression__
+The goal of linear regression is to identify the best-fit line passing through continuous data by employing a specific mathematical criterion. This technique falls under the umbrella of "supervised machine learning." Before jumping into linear regression, though, we should first understand what supervised learning is all about [@Kurama2020].
+
+__Applications of Linear Regression__
+Linear regression is a powerful statistical technique that can generate insights into consumer behaviour, help to understand the business better, and comprehend factors influencing profitability. It can also be put to work evaluating trends and forecasting data in various fields. We can use linear regression to solve a few of our day-to-day problems related to supporting decision-making, minimizing errors, increasing operational efficiency, discovering new insights, and creating predictive analytics [@Kurama2020].
+
+# Data
+solving business problems and can be used to answer random questions and explore relationships that take time to be intuitive. Information gathered from customer satisfaction surveys can also help your business stay current and better understand what customers want and need. The information was gathered from a survey of 305 people, in which respondents indicated how satisfied they were with the cars they had purchased. This survey asks 24 questions about different parts of the car, a general question about satisfaction and four other pieces of information, such as age, gender, level of education, and why the car was bought.
+The Iran Standard and Quality Inspection Company (ISQI) provided this information to me, which performs various tasks. One of the most important parts of the company is the customer and market research department, which also provides consulting services. Car manufacturers in Iran use these consultations and quality reports and sometimes by the Ministry of Industry, Mining, and Trade. This process of collecting information from customers is also done by questioners who are settled in the call centre of this company.
+
+# Survey
+The best method for evaluating customer satisfaction is receiving direct customer feedback. The final questions depend on what you wish to know. As a result, we must create a survey that reflects the entire picture.
+Customer satisfaction surveys are essential for improving businesses and ensuring customers remain with them. A good customer satisfaction survey should provide the statistical data required for analyzing your stated objectives. These surveys can also help your business increase productivity and profitability by evaluating customer expectations of your products and services and their level of trust and loyalty to your company.
+This survey is designed based on the Likert scale and represents a 5-point description. The Likert scale is used to measure the point of view, feelings, judgment, and, in general, issues that are not visible but affect people's behaviour. We used the Likert scale in this questionnaire because we must have various answers to reflect all points of view when we want to measure people's satisfaction. These answers include very low, low, medium, high, and very high. A brief explanation of the Likert scale is below:
+
+__Likert Scale__
+A Likert scale is a rating scale used in surveys and other research to measure attitudes, opinions, or perceptions. It is named after the American psychologist Rensis Likert, who developed the technique in the 1930s. The scale typically consists of a series of statements, each of which the respondent is asked to rate on a scale of agreement, usually ranging from strongly disagree to agree strongly. The scale can have a five or seven-point scale; it can have more or fewer points per the requirement. Likert scales are used in various research fields, including psychology, sociology, education, and marketing. They are considered reliable and valid methods of measuring attitudes and opinions and are widely used in survey research. I chose this scale for my survey because it can show customers' perceptions; all the information and figures can be seen, and you can see how the answers are distributed among the customers.
+
+# Purpose of Study
+It is necessary to go beyond meeting users' basic demands for long-term business growth. Setting and measuring customer satisfaction goals is the best way to delight your customers and keep them returning over the long term.
+The achievement reflects a consumer's subjective perception of an organization or a product based on how well it matches his or her expectations of that organization or product. There are different dimensions of customer satisfaction in various organizations. For instance:
+Products: quality, lifetime, design, applicability, and performance
+Delivery: timely delivery and delivery speed
+Employees and services: availability of employees or representatives, knowledge of employees or representatives, speed of solving problems and dealing with complaints, speed of responding to items, after-sale services, and professional behaviour of employees or representatives.
+Competitive pricing; product value for price parity
+Organization: ease of communication, ease of business, and transparency
+In this regard, I want to answer these two questions:
+
+Which part of the car has a more significant effect on overall satisfaction?
+
+Which one of the factors has a more significant impact on consumer satisfaction?
+
+# Framework
+Enhancing the quality of the car is possible by analyzing the data. For this purpose, car manufacturers should not only improve the parts of the car that received a lower score but also identify the parts of the car that consumers pay more attention to, or, in other words, parts that have the most significant effect on increasing the level of consumer satisfaction. Car manufacturers must also maintain the quality of those parts at an acceptable level or even improve them. The following list explains the procedure in further detail:
+
+__Logical Organization of the R Markdown Script__
+
+
+1.	Install and load libraries of R
+1.	Import data
+1.	Process data
+1.	Produce outputs (tables, plots, etc.)
+1.	Save outputs, if applicable (.csv, .png, etc.)
+
+## Install and Load Libraries of R
+In the first step, I need to install the packages for my project. So, I used the function install.packages() to install packages like tidyverse, ggplot, and likert, and then I used the library() function to load them. Tidyverse provides a consistent, easy-to-learn, and integrated approach to data analysis and manipulation. The packages in the tidyverse include ggplot2 for data visualization, dplyr for data manipulation, tidyr for data cleaning, and readr for data import, among others. The tidyverse aims to provide a set of tools that work together seamlessly and make data analysis more efficient and enjoyable.
+
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+library("htmltools")
+library("tidyverse")
+```
+This output is generated when the tidyverse package is loaded into R. It shows the version of each package within the tidyverse and confirms that they have been loaded successfully. The package versions listed indicate that you are using tidyverse version 1.3.2 and each of its sub-packages (e.g. dplyr version 1.0.10, tidyr version 1.2.1, etc.). The warning messages indicate that some of the packages in the tidyverse were built under a different version of R and may cause conflicts with other R functions with the same name. The Conflicts section shows any potential conflicts between the tidyverse packages and other packages in your environment.
+```{r, include= TRUE}
+library("ggplot2")
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+library("likert")
+```
+
+## Data Importing
+
+I use the R programming language to analyze my data. I use confidential data that is not available from public sources. Before we can manipulate and analyze data with R, we must import data. R supports various file formats, including .docx, .xls, .txt, and comma-separated files like.csv.I imported MZ data with the function read.csv() and named the dataframe survey1.
+
+```{r, include= TRUE}
+survey1 <- read.csv("datascience1.csv", header = TRUE, sep = ",")
+```
+
+## Data Cleaning
+
+Initially, 305 people responded to the survey1. In this step, I defined a value named "respondent" and added five more respondents to my data. Because I wanted to make sure that there was a variety of 1, 2, 3, 4, and 5 values in answer to each question, this means all of the answers to the questions for respondent 306 would be 1, all of the answers to the questions for respondent 307 would be 2, and so on.
+```{r, include= TRUE}
+Respondent <- c("306", "307", "308", "309", "310")
+Q01 <- c(1, 2, 3, 4, 5)
+Q02 <- c(1, 2, 3, 4, 5)
+Q03 <- c(1, 2, 3, 4, 5)
+Q04 <- c(1, 2, 3, 4, 5)
+Q05 <- c(1, 2, 3, 4, 5)
+Q06 <- c(1, 2, 3, 4, 5)
+Q07 <- c(1, 2, 3, 4, 5)
+Q08 <- c(1, 2, 3, 4, 5)
+Q09 <- c(1, 2, 3, 4, 5)
+Q10 <- c(1, 2, 3, 4, 5)
+Q11 <- c(1, 2, 3, 4, 5)
+Q12 <- c(1, 2, 3, 4, 5)
+Q13 <- c(1, 2, 3, 4, 5)
+Q14 <- c(1, 2, 3, 4, 5)
+Q15 <- c(1, 2, 3, 4, 5)
+Q16 <- c(1, 2, 3, 4, 5)
+Q17 <- c(1, 2, 3, 4, 5)
+Q18 <- c(1, 2, 3, 4, 5)
+Q19 <- c(1, 2, 3, 4, 5)
+Q20 <- c(1, 2, 3, 4, 5)
+Q21 <- c(1, 2, 3, 4, 5)
+Q22 <- c(1, 2, 3, 4, 5)
+Q23 <- c(1, 2, 3, 4, 5)
+Q24 <- c(1, 2, 3, 4, 5)
+Finalsatisfaction <- c(1, 2, 3, 4, 5)
+```
+Now there is fake data, including five fake respondents for 24 questions, and the final satisfaction of every customer, defined through the below function.
+```{r, include= TRUE}
+fake <- data.frame(Respondent, 
+    Q01, Q02, Q03, Q04, Q05, Q06, Q07, Q08, Q09, Q10,
+    Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, 
+    Q21, Q22, Q23, Q24, Finalsatisfaction)
+```
+I combined two data frames, survey1 and fake, by row using the rbind() function and named it survey2.
+```{r, include= TRUE}
+survey2 <- rbind(survey1, fake)
+survey2$Q01_f <- as.factor(survey2$Q01)
+survey2$Q02_f <- as.factor(survey2$Q02)
+survey2$Q03_f <- as.factor(survey2$Q03)
+survey2$Q04_f <- as.factor(survey2$Q04)
+survey2$Q05_f <- as.factor(survey2$Q05)
+survey2$Q06_f <- as.factor(survey2$Q06)
+survey2$Q07_f <- as.factor(survey2$Q07)
+survey2$Q08_f <- as.factor(survey2$Q08)
+survey2$Q09_f <- as.factor(survey2$Q09)
+survey2$Q10_f <- as.factor(survey2$Q10)
+survey2$Q11_f <- as.factor(survey2$Q11)
+survey2$Q12_f <- as.factor(survey2$Q12)
+survey2$Q13_f <- as.factor(survey2$Q13)
+survey2$Q14_f <- as.factor(survey2$Q14)
+survey2$Q15_f <- as.factor(survey2$Q15)
+survey2$Q16_f <- as.factor(survey2$Q16)
+survey2$Q17_f <- as.factor(survey2$Q17)
+survey2$Q18_f <- as.factor(survey2$Q18)
+survey2$Q19_f <- as.factor(survey2$Q19)
+survey2$Q20_f <- as.factor(survey2$Q20)
+survey2$Q21_f <- as.factor(survey2$Q21)
+survey2$Q22_f <- as.factor(survey2$Q22)
+survey2$Q23_f <- as.factor(survey2$Q23)
+survey2$Q24_f <- as.factor(survey2$Q24)
+```
+In this level, I defined a value named "factor levels," ranging from very low to very high. As previously stated, very low satisfaction equals 1, and very high satisfaction equals 5.
+```{r, include= TRUE}
+factor_levels <- c("very low", "low", "medium", "high", "very high")
+
+levels(survey2$Q01_f) <- factor_levels
+levels(survey2$Q02_f) <- factor_levels
+levels(survey2$Q03_f) <- factor_levels
+levels(survey2$Q04_f) <- factor_levels
+levels(survey2$Q05_f) <- factor_levels
+levels(survey2$Q06_f) <- factor_levels
+levels(survey2$Q07_f) <- factor_levels
+levels(survey2$Q08_f) <- factor_levels
+levels(survey2$Q09_f) <- factor_levels
+levels(survey2$Q10_f) <- factor_levels
+levels(survey2$Q11_f) <- factor_levels
+levels(survey2$Q12_f) <- factor_levels
+levels(survey2$Q13_f) <- factor_levels
+levels(survey2$Q14_f) <- factor_levels
+levels(survey2$Q15_f) <- factor_levels
+levels(survey2$Q16_f) <- factor_levels
+levels(survey2$Q17_f) <- factor_levels
+levels(survey2$Q18_f) <- factor_levels
+levels(survey2$Q19_f) <- factor_levels
+levels(survey2$Q20_f) <- factor_levels
+levels(survey2$Q21_f) <- factor_levels
+levels(survey2$Q22_f) <- factor_levels
+levels(survey2$Q23_f) <- factor_levels
+levels(survey2$Q24_f) <- factor_levels
+```
+I used the "nrow" function to find the dimensions of my data frame and return the number of rows.
+```{r message=FALSE, warning=FALSE}
+nrow(survey2)
+```
+The "subset" function is used to choose a subset of a data frame based on specific criteria. I only wanted respondents who were less than 306. because the data from 306 to 310 were fake, and I added them myself.
+```{r message=FALSE, warning=FALSE}
+survey3 <- subset(survey2, Respondent < 306)
+nrow(survey3)
+```
+The colnames() function is used to retrieve or set the column names of a data frame. When used without arguments, it returns the current column names of the specified data frame. When used with a character vector as an argument, it sets the column names of the specified data frame to the given character vector. In this section, I used this function to get the names.
+```{r message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
+colnames(survey3)
+survey4 <- survey3[,27:50]
+colnames(survey4)
+```
+In this section, I defined the names of columns 1 to 24 as a VarHeading value. Then the names() function is used to retrieve or set the names of an object. It can be used on various objects, including vectors, lists, and data frames. As you can see, I used the VarHeading name I defined earlier in Survey 4. Now the data is ready to work with.
+```{r r, message=FALSE, warning=FALSE, include=TRUE}
+VarHeadings <- c("Doors",
+"Body color","Silence inside the cabin",
+"No penetration of water and wind","Power and acceleration","Fuel
+consumption", "Condition of engine","Steering system","Clutch set","Gearbox",
+"Suspension and shock absorbers", "Braking performance","Handbreaks", 
+"Windshield wiper and washer","Safety equipment","Seats","Tires","Lights and 
+light adjusment","Heater", "Cooler","Elevator glass","Power supply system",
+"Electrical appliance (hoen, amps, anttena, etc","Audio and video system")
+
+names(survey4) <- VarHeadings
+colnames(survey4)
+```
+To display the following graph, I first called the Likert library and placed survey 4, which I had prepared in the previous steps. After adjusting the plot display settings and matching them, I finally used the plot function to display the graph. In this diagram, as you can see, the vertical vector includes twenty-four different parts of the car that customers are asked about. Moreover, this diagram shows that customer satisfaction in all parts tends to be satisfied or very satisfied. Furthermore, the level of satisfaction is categorized from high to low. For example, the level of satisfaction with the hand brake is higher than with the electrical appliance. As can be seen, 86% of the customers are satisfied with the performance of the handbrake, 14% have rated its performance as average or neutral, and only 1% of the interviewees were dissatisfied with its performance; these numbers for the electrical appliance are 83%, respectively. 83% are satisfied, 13% are neutral, and 5% are dissatisfied, a slightly higher percentage than HandBrake. In this way, we realize that we have severe problems in the power and acceleration section because less than 50% of the customers are satisfied with its performance.
+```{r,include=TRUE}
+library(likert)
+p <- likert(survey4)
+a <- likert.bar.plot(p, legend.position = "right", text.size = 2) +
+   theme(text = element_text(size = rel(4)),axis.text.y = element_text(size=
+   rel(2))) + theme_update(legend.text = element_text(size = rel(0.7))) + 
+   theme_classic()
+plot(a)
+```
+At this stage, to show the dispersion of the data as much as possible and give an accurate view, we obtained a scatter plot by calling the ggplot2 library and the ggplot function. In this function, we set it to take the information from Survey 1 and set the X vector equal to the information in the Respondent column and the Y vector equal to the information in the Final Satisfaction column. As you can see, with as many as 305 interviewed customers, there are different points in this plot, each of which has a distinct final satisfaction, and this shows how scattered our statistical society is. Moreover, on the other hand, there is very little dispersion in the level of very high or very low scores, and most people gave average to good scores between 3 and 4.
+
+```{r,include=TRUE}
+library(ggplot2)
+ggplot(survey1, aes(x = Respondent, y = Finalsatisfaction)) + geom_point()
+```
+Using the ggplot library in R, this code makes a scatter plot with the sum of the variables Q01–Q24 on the x-axis and the final satisfaction on the y-axis. The data points are plotted as dots. From the shape of the line, it is understandable that there is a correlation between each factor and the final satisfaction because they are already a part of that. A warning message also indicates that 239 rows containing missing values have been removed from the data set before plotting a scatter plot using the geom_point() function. The warning informs the user that the data set used for the plot may not be complete and that some values have been removed. It is common for R to remove missing values before plotting to prevent errors or unexpected results.
+```{r warning=TRUE}
+library(ggplot2)
+ggplot(survey1, aes(x = Q01+Q02+Q03+Q04+Q05+Q06+Q07+Q08+Q09+Q10+Q11+Q12+Q13
++Q14+Q15+Q16+Q17+Q18+Q19+Q20+Q21+Q22+Q23+Q24, y = Finalsatisfaction)) +
+geom_point()
+```
+I put this code in place because I wanted to ensure that the line's slope was clear. I received warnings in this section then looked into it and discovered that these are warning messages generated by the R programming language when removing rows with non-finite or missing values while plotting a graph. The messages indicate that 239 rows with non-finite values or missing values were removed from the dataset used for plotting the graph. The stat_smooth() and geom_point() functions in R are commonly used for smoothing and plotting to scatter plots, respectively. However, in the end, I understood that these warnings would not cause a problem during the project, so I decided not to consider that or do anything special about it.
+```{r warning=TRUE}
+ggplot(survey1, aes(x=Q01+Q02+Q03+Q04+Q05+Q06+Q07+Q08+Q09+Q10+Q11+Q12+Q13
++Q14+Q15+Q16+Q17+Q18+Q19+Q20+Q21+Q22+Q23+Q24, y=Finalsatisfaction)) +
+geom_point() + stat_smooth(formula=y~x, method="lm", se=FALSE, colour="red",
+linetype=1)
+```
+I used the lm function, and this line fits a linear regression model with the response variable, Finalsatisfaction and predictor variables Q01 to Q24. The data for the regression is from the survey1 data frame. The ~ symbol indicates the relationship between the response and predictor variables. The fitted model is assigned to the variable model.
+```{r}
+model  <- lm(Finalsatisfaction ~ Q01+Q02+Q03+Q04+Q05+Q06+Q07+Q08+Q09+Q10+Q11
++Q12+Q13+Q14+Q15+Q16+Q17+Q18+Q19+Q20+Q21+Q22+Q23+Q24, data = survey1 )
+```
+This line displays the summary of the linear regression model. This summary includes the coefficients, residuals, goodness of fit measures, etc. The show function in R displays a summary of the model object.
+```{r}
+show(model)
+```
+The first line retrieves the intercept term from the linear regression model and assigns it to the variable interm. The model$coefficients part gets the coefficients from the model object,
+and [1] picks the first element, which is the intercept term.
+
+The second line retrieves the slope coefficient for the predictor variable Q01+Q02+Q03+Q04
++Q05+Q06+Q07+Q08+Q09+Q10+Q11+Q12+Q13+Q14+Q15+Q16+Q17+Q18+Q19
++Q20+Q21+Q22+Q23+Q24 and assigns it to the variable slope. The [2] part selects the second element, which is the slope coefficient.
+
+The third line creates a new variable intercept by adding the intercept term
+to another coefficient in the linear regression model.
+```{r}
+interm <- model$coefficients[1] 
+slope  <- model$coefficients[2]
+interw <- model$coefficients[1]+model$coefficients[3] 
+```
+A summary is a helpful tool for figuring out how to understand and explain the linear regression results. This line displays a summary of the linear regression model stored in the model object. The summary function provides a comprehensive summary of the model, including information about the coefficients, residuals, goodness of fit measures, etc.
+```{r}
+summary(model)
+```
+As I mentioned, this code creates a scatterplot using the ggplot function, with the data coming from the survey1 data frame. The x argument specifies the predictor variable (the sum of various survey question responses), and the y argument specifies the response variable (Finalsatisfaction).
+
+geom_point() adds a geom (geometric object) of type point to the plot, which displays individual data points as points on the scatterplot.
+
+geom_abline (slope = slope, intercept = interw, linetype = 2, size = 1.5) adds a regression line to the plot, with a slope and intercept specified by the slope and interw variables, respectively. The linetype = 2 argument specifies that the line will be dotted, and size = 1.5 sets the size of the line.
+
+geom_abline(slope = slope, intercept = interm, linetype = 2, size = 1.5) is similar to the previous geom_abline, but uses the interm variable instead of interw to specify the intercept.
+
+geom_abline: This code adds a third regression line to the plot (slope = coef(model)[[2]], intercept = coef(model)[[1]), with the slope and intercept specified by the model object's coefficients. The coef function retrieves the coefficients from the model, and [[2]] and [[1]] select the slope and intercept, respectively.
+```{r warning=FALSE}
+ggplot(survey1, aes(x=Q01+Q02+Q03+Q04+Q05+Q06+Q07+Q08+Q09+Q10+Q11+Q12+Q13
++Q14+Q15+Q16+Q17+Q18+Q19+Q20+Q21+Q22+Q23+Q24, y=Finalsatisfaction)) +
+geom_point() +
+geom_abline(slope = slope, intercept = interw, linetype = 2, size=1.5)+
+geom_abline(slope = slope, intercept = interm, linetype = 2, size=1.5) +
+geom_abline(slope = coef(model)[[2]], intercept = coef(model)[[1]]) 
+```
+```{r warning=FALSE}
+ggplot(survey1, aes(x=Q01+Q02+Q03+Q04+Q05+Q06+Q07+Q08+Q09+Q10+Q11+Q12+Q13
++Q14+Q15+Q16+Q17+Q18+Q19+Q20+Q21+Q22+Q23+Q24, y=Finalsatisfaction)) +
+geom_point( aes(size = 2)) + stat_smooth(formula = y ~ x,  method = "lm", 
+se = FALSE, colour = "red", linetype = 1)
+```
+```{r warning=FALSE}
+model  <- lm(Finalsatisfaction ~ Q01+Q02+Q03+Q04+Q05+Q06+Q07+Q08+Q09+Q10+Q11
++Q12+Q13+Q14+Q15+Q16+Q17+Q18+Q19+Q20+Q21+Q22+Q23+Q24 , data = survey1 )
+
+ggplot(survey1, aes(x=Q01+Q02+Q03+Q04+Q05+Q06+Q07+Q08+Q09+Q10+Q11+Q12+Q13
++Q14+Q15+Q16+Q17+Q18+Q19+Q20+Q21+Q22+Q23+Q24, y=Finalsatisfaction)) +
+geom_point( aes(size = 2)) +stat_smooth(formula = y ~ x, method = "lm", 
+se = T, colour = "red", linetype = 1)
+```
+This code performs a series of linear regression models (m1 to m5) where Finalsatisfaction is the dependent variable and Q01, Q02, Q01 * Q02, and Q03 are independent variables. The first model (m1) has only Q01 as the independent variable, the second (m2) has both Q01 and Q02, the third (m3) has both Q01 and Q02 and an interaction term between them, the fourth (m4) has Q01, Q02, an interaction term between them, and Q03. The fifth (m5) is similar to the third model but with the interaction term.
+
+After fitting the models, the tab_model() function from the sjPlot library displays a table comparing the models, with p-values (indicating the significance of the independent variables) and coefficients presented. The p-values are presented with stars to indicate significance levels defined in p.threshold (0.2, 0.1, and 0.05). However, confidence intervals are not displayed (show.ci = FALSE), and standard errors are also not displayed (show.se = FALSE).
+```{r message=FALSE, warning=FALSE}
+m1 <- lm(Finalsatisfaction ~ Q01 , data = survey1 )
+m2 <- lm(Finalsatisfaction ~ Q01 + Q02 , data = survey1 )
+m3 <- lm(Finalsatisfaction ~ Q01 + Q02 + Q01 * Q02 , data = survey1 )
+m4 <- lm(Finalsatisfaction ~ Q01 + Q02 + Q01 * Q02 + Q03 , data = survey1 )
+m5 <- lm(Finalsatisfaction ~ Q01 + Q02 + Q01* Q02 , data = survey1)
+```
+
+This code creates a boxplot with jittered points to visualize the relationship between Q01 and Finalsatisfaction in the survey1 data.
+
+The ggplot() function is used to create the plot, with Q01 as the x-axis, Finalsatisfaction as the y-axis, and Q01 defined as the grouping variable. The geom_boxplot() function is used to draw the boxplot and scale_fill_viridis() is used to set the color palette. The geom_jitter() function is used to add the jittered points with the specified color, size, and alpha level.
+
+The theme() function is used to adjust the plot appearance, with the legend position set to "none" and the plot title size set to 11. The ggtitle() function is used to set the plot title, and xlab() is used to label the x-axis.
+
+Loading the hrbrthemes and viridis libraries gives the plot more options for how to format it.
+
+
+```{r warning=FALSE, include=TRUE}
+library(viridis)
+
+
+  ggplot(survey1, aes(x = Q01, y = Finalsatisfaction, group = Q01)) +
+  geom_boxplot() +
+  scale_fill_viridis(discrete = TRUE, alpha=0.6) +
+  geom_jitter(color="black", size=0.4, alpha=0.9) +
+  theme(
+    legend.position="none",
+    plot.title = element_text(size=11)
+  ) +
+  ggtitle("A boxplot with jitter") +
+  xlab("")  
+```
+
+# Data Analysis
+
+Using data to discover the relationship between them is the basis of data analysis. One of the tools for relationship measurement and modelling is regression. Regression is used to discover the model of a linear relationship between variables. In my case, one of the conventional methods is the "multiple linear regression" technique because I have 24 different variables. Regression analysis establishes a linear relationship between the "response variable" and one or more "explanatory variables." Of course, sometimes, the response variable is called a "dependent variable," and descriptive variables are also called "independent variables."
+I want to see which of the 24 possible answers to the project's 24 questions has the most significant impact on satisfaction. So, we need to make a 24-variable regression equation to answer this question. Which will be like this:
+$$
+y_i=\beta_0+\beta_{1}x_{i1}+\beta_{2}x_{i2}+\beta_{3}x_{i3}+...+\beta_{24}x_{i24}+\epsilon_i , i=1,...,n
+$$
+When I tried to solve the equation, I found no way to get a result from a 24-variable regression equation due to the number of variables. Thus, I decided to solve the regression for each variable. In this respect, I had to run the code for each question and get the result, then compare the amount of R-squared. The stronger the correlation between that variable and final satisfaction, the higher the R-squared value.
+
+```{r}
+model1 <- lm(Finalsatisfaction ~ Q01 , data = survey1)
+model2 <- lm(Finalsatisfaction ~ Q02 , data = survey1)
+model3 <- lm(Finalsatisfaction ~ Q03 , data = survey1)
+model4 <- lm(Finalsatisfaction ~ Q04 , data = survey1)
+model5 <- lm(Finalsatisfaction ~ Q05 , data = survey1)
+model6 <- lm(Finalsatisfaction ~ Q06 , data = survey1)
+model7 <- lm(Finalsatisfaction ~ Q07 , data = survey1)
+model8 <- lm(Finalsatisfaction ~ Q08 , data = survey1)
+model9 <- lm(Finalsatisfaction ~ Q09 , data = survey1)
+model10 <- lm(Finalsatisfaction ~ Q10 , data = survey1)
+model11 <- lm(Finalsatisfaction ~ Q11 , data = survey1)
+model12 <- lm(Finalsatisfaction ~ Q12 , data = survey1)
+model13 <- lm(Finalsatisfaction ~ Q13 , data = survey1)
+model14 <- lm(Finalsatisfaction ~ Q14 , data = survey1)
+model15 <- lm(Finalsatisfaction ~ Q15 , data = survey1)
+model16 <- lm(Finalsatisfaction ~ Q16 , data = survey1)
+model17 <- lm(Finalsatisfaction ~ Q17 , data = survey1)
+model18 <- lm(Finalsatisfaction ~ Q18 , data = survey1)
+model19 <- lm(Finalsatisfaction ~ Q19 , data = survey1)
+model20 <- lm(Finalsatisfaction ~ Q20 , data = survey1)
+model21 <- lm(Finalsatisfaction ~ Q21 , data = survey1)
+model22 <- lm(Finalsatisfaction ~ Q22 , data = survey1)
+model23 <- lm(Finalsatisfaction ~ Q23 , data = survey1)
+model24 <- lm(Finalsatisfaction ~ Q24 , data = survey1)
+summary(model1)
+summary(model2)
+summary(model3)
+summary(model4)
+summary(model5)
+summary(model6)
+summary(model7)
+summary(model8)
+summary(model9)
+summary(model10)
+summary(model11)
+summary(model12)
+summary(model13)
+summary(model14)
+summary(model15)
+summary(model16)
+summary(model17)
+summary(model18)
+summary(model19)
+summary(model20)
+summary(model21)
+summary(model22)
+summary(model23)
+summary(model24)
+```
+# Conclusion
+As you can see in the results that we got, the amount of R-squared is different, ranging from 0.3109 for Q17 to 0.5231 for Q16. This demonstrates that Q16, which refers to seat quality, is highly related to overall satisfaction. In other words, manufacturers can use this high correlation to improve final satisfaction with minor improvements in seat quality. In conclusion, this data science project aimed at analyzing the final satisfaction of car consumers. Our findings indicate a strong positive correlation between the two factors, with high-quality seats significantly predicting consumer Finalsatisfaction. These results provide valuable insights for car manufacturers, as they suggest that investing in seat quality can improve consumer Finalsatisfaction and ultimately increase brand loyalty. These findings also offer a valuable reference for consumers when making their next car purchase. Seat quality should be a significant consideration when evaluating a car's overall satisfaction.
+
+__Obstacles I Overcame__
+
+This project has some obstacles I can overcome but others that I cannot, as I will explain in the next chapter.
+
+_Data Quality_
+The data I have collected may need to be completed, accurate, or consistent, making it difficult to conduct a reliable analysis. To address issues with data quality, I conducted a thorough data cleaning and preprocessing step. This may include checking for missing values, outliers, and inconsistencies and addressing them accordingly.
+
+_Lack of Domain Knowledge_
+Because I was not familiar with the car industry, I needed help interpreting the data and identifying important features that influence customer satisfaction. However, I researched the car industry to overcome this obstacle and familiarized myself with critical concepts and terminology. I also got to consult with experts in the field to gain additional insights.
+
+_Overfitting_
+With too many features or a complex model, I may fit the model to the noise in the data rather than the underlying pattern. In this regard, I limited the range of my data and decreased the number of variables to the most important of them.
+
+_Difficulty in Communicating Findings_ 
+It may be challenging to present findings and recommendations clearly, and concisely which is understandable for people who are not experts in data science. This way, I used language and pictures that were easy to understand to explain my results and suggestions.
+
+__Remaining Challenges, Problems, and Weaknesses__
+
+_Limited Data Size_ 
+With only 305 data points, my sample size was too small to make accurate predictions or detect subtle patterns in the data. I could have thought about getting more data or using techniques like "data augmentation" to make my dataset bigger than it was, but I could not do that for several reasons, and this remained a weakness of my project.
+
+_Time Constraints_ 
+I had limited time to complete the project, so I needed to prioritize and focus on the most critical tasks and impactful aspects of my project. This may have caused me to miss some information, but I set realistic goals and deadlines for each task to stay on track.
+
+_Difficulty in Choosing Fatures_ 
+Because there are 24 different parts and variables in a car, it may be hard to figure out which features are the most important for predicting customer satisfaction.
+
+
+_Multicollinearity_ 
+Refers to a situation where two or more predictor variables in a multiple regression model are highly correlated. This can cause problems in estimating the regression coefficients and interpreting the model results. When two or more predictor variables are highly correlated, they measure similar information and are redundant. This redundancy can lead to unstable and unreliable estimates of the regression coefficients, as small changes in the data can result in significant changes in the estimates. Additionally, when there is multicollinearity, it becomes difficult to determine the unique effect of each predictor variable on the response variable, as the effects of the predictor variables are confounded. There are a few common ways to detect multicollinearity in regression models. One way is to calculate the correlation matrix of the predictor variables and look for high correlation coefficients. Another way is to calculate the Variance Inflation Factor (VIF) for each predictor variable, which measures how much the coefficient estimate's variance is increased due to multicollinearity. VIF values greater than 1 indicate that there is multicollinearity present.
+
+
+# Reference List
